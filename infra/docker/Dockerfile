@@ -24,7 +24,7 @@ RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts
 RUN npm run build:site-home
 
 # ---------- runtime ----------
-FROM nginxinc/nginx-unprivileged:1.30.5-alpine@sha256:15c994d10d6d78658721c3bcafff14cb281fba2a4bdf9d5ba92c416a472516e3 AS runtime
+FROM nginxinc/nginx-unprivileged:1.31.6-alpine@sha256:b9241c6e7b8e9a862f129d8d4199ab64b10390949a78bdd5603379b32c844083 AS runtime
 
 LABEL org.opencontainers.image.title="source-libraries" \
       org.opencontainers.image.description="Self-hosted build of the MIT-licensed Libraries.dev UI libraries and site" \
