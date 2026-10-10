@@ -357,8 +357,9 @@
   /* ── GitHub stars ────────────────────────────────────────── */
   var starsBtn = document.getElementById("gh-stars-btn");
   var starsCount = document.getElementById("gh-stars-count");
-  var GH_REPO = "Jakubantalik/Libraries.dev";
-  var GH_KEY = "ldev:gh-stars";
+  var GH_REPO = "Atlas-6174/source-libraries";
+  // New key: sessions that cached the upstream repo's count must not reuse it.
+  var GH_KEY = "ldev:gh-stars:source-libraries";
   var GH_TTL = 5 * 60 * 1000;
 
   function fmtStars(n) {
