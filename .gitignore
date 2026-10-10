@@ -73,3 +73,8 @@ sites/home/vite.local.mjs
 .env.*
 !.env.example
 .claude/settings.local.json
+
+# Fork: local-only maintainer tooling and working notes (kept on disk, not published)
+.claude/
+CLAUDE.md
+docs/memory/
