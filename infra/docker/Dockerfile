@@ -32,6 +32,12 @@ LABEL org.opencontainers.image.title="source-libraries" \
       org.opencontainers.image.source="https://github.com/Atlas-6174/source-libraries" \
       org.opencontainers.image.licenses="MIT"
 
+# Pick up Alpine security fixes released after the base image was built
+# (e.g. CVE-2026-4775 in tiff), then drop back to the image's unprivileged user.
+USER root
+RUN apk upgrade --no-cache
+USER 101
+
 COPY infra/docker/nginx.conf /etc/nginx/conf.d/default.conf
 # Root-owned, world-readable: the nginx user can serve but not modify content.
 COPY --from=build /app/sites/home/dist /usr/share/nginx/html
