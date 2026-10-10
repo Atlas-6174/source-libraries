@@ -230,12 +230,12 @@
     { label: "Voice", href: "/voice.html" },
     { label: "Metal", href: "/metal.html" },
     { label: "Image", href: "/image.html" },
-    { label: "Studio", href: "/studio.html" },
-    { label: "Libraries Pro", href: "/pro.html" }
+    { label: "Studio", href: "/studio.html" }
   ];
   var ACTIONS = [
-    { label: "Get Pro access", href: "/pro.html" },
-    { label: "View on GitHub", href: "https://github.com/Jakubantalik/Libraries.dev", external: true },
+    { label: "Open the Studio", href: "/studio/app.html" },
+    { label: "View source on GitHub", href: "https://github.com/Atlas-6174/source-libraries", external: true },
+    { label: "Original project (Libraries.dev)", href: "https://github.com/Jakubantalik/Libraries.dev", external: true },
     { label: "Contact support", href: "https://github.com/Atlas-6174/source-libraries/issues" }
   ];
 
