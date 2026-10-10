@@ -6,19 +6,33 @@ All notable changes to this fork are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-10-10
+
+### Changed
+- The navigation's GitHub button links to and shows the star count of
+  github.com/Atlas-6174/source-libraries instead of the upstream repository;
+  accessibility issue reports go to this repository too.
+- Build stage on Node 24.21.0 (Alpine 3.23), the current Node 24 LTS patch
+  level; the Alpine 3.22 variant no longer receives Node 24 releases.
+- Dependabot proposes only Node 24.x and nginx 1.30.x (stable) patch
+  updates; moves to a new LTS or stable branch are deliberate.
+
+### Security
+- Dev tooling updated to the versions proposed by Dependabot: postcss 8.5.29,
+  nanoid 3.3.20, brace-expansion 1.1.21/2.1.7, browserslist 4.29.3,
+  baseline-browser-mapping 2.11.28, sharp 0.35.5, wrangler 4.149.0. Runtime
+  dependencies had no advisories; the site output is unchanged.
+- vite stays on 5.x for now; its dev-server advisories do not affect the
+  image, which never runs the dev server.
+
 ### Removed
 - Upstream directories this fork does not ship: native iOS/React Native ports,
   the standalone beam/gooey/orbs demo sites, `services/`, `cli/`, `skills/`,
   `Package.swift` and `.node-version`. This drops the lockfiles behind most
   Dependabot alerts; none of it was part of the image.
+- An unused nested lockfile in `packages/metal-fx`.
 - Maintainer tooling (`.claude/`, `CLAUDE.md`) and working notes
   (`docs/memory/`) are no longer published.
-
-### Changed
-- Build stage on Node 24.21.0 (Alpine 3.23), the current Node 24 LTS patch
-  level; the Alpine 3.22 variant no longer receives Node 24 releases.
-- Dependabot proposes only Node 24.x and nginx 1.30.x (stable) patch
-  updates; moves to a new LTS or stable branch are deliberate.
 
 ## [0.1.1] - 2026-10-10
 
@@ -74,6 +88,7 @@ All notable changes to this fork are documented here. The format follows
   self-hosted users run the site. They now show only under `vite dev` or with
   `?dev`.
 
-[Unreleased]: https://github.com/Atlas-6174/source-libraries/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/Atlas-6174/source-libraries/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/Atlas-6174/source-libraries/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/Atlas-6174/source-libraries/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/Atlas-6174/source-libraries/releases/tag/v0.1.0
