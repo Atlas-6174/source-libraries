@@ -24,7 +24,7 @@
 - Auditoría 3a aplicada (fix/audit-3a, adeb622). Incremento 3b en rama `feat/rebrand`: rebranding completo, copy sin Pro, logos/testimonios eliminados, paneles dev solo en `vite dev`/`?dev`. verify-site 16/16, typecheck OK, presupuestos OK (Studio 389/450 KB, máx. 195/250 KB, imagen 36.5/50 MB).
 
 ## Próximo paso
-- Push de ramas a origin y PR(s) a main (requiere confirmación del usuario); tras merge y CI verde, tag v0.1.0 → release GHCR.
+- main publicado en origin (8e0c0f4); CI falló en Browser check (timeout CDP en /image sin GPU). Fix en rama `fix/ci-verify-timeout` → PR a main (abrir el usuario, sin gh). Tras CI verde: tag v0.1.0.
 
 ## Bloqueos / preguntas abiertas
 - [NO VERIFICADO jurídicamente] `terms.html` de upstream describe el Studio como contenido Pro aunque su código esté bajo MIT en el repo; recomendado validar con el autor o un abogado antes de difundir públicamente.

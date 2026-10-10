@@ -31,6 +31,9 @@ const PAGES = ["/", "/beam", "/orbs", "/bots", "/gooey", "/voice", "/metal", "/i
   "/studio", "/studio/app", "/skill", "/how-to-use", "/introduction", "/accessibility",
   "/terms", "/privacy"];
 const SETTLE_MS = Number(process.env.VERIFY_SETTLE_MS) || 3500;
+// Per-command safety net against a hung browser, not a performance check.
+// Without a GPU (CI runners), software WebGL keeps /image busy for ~45 s.
+const CDP_TIMEOUT_MS = Number(process.env.VERIFY_CDP_TIMEOUT_MS) || 90000;
 
 const CHROME_CANDIDATES = [
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
@@ -101,7 +104,7 @@ ws.onmessage = (ev) => {
 };
 const send = (method, params = {}, sessionId) => new Promise((resolve, reject) => {
   const id = ++nextId;
-  const timer = setTimeout(() => { pending.delete(id); reject(new Error(`CDP timeout: ${method}`)); }, 15000);
+  const timer = setTimeout(() => { pending.delete(id); reject(new Error(`CDP timeout: ${method}`)); }, CDP_TIMEOUT_MS);
   pending.set(id, (msg) => { clearTimeout(timer); resolve(msg); });
   ws.send(JSON.stringify({ id, method, params, sessionId }));
 });

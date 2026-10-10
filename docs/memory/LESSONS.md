@@ -9,3 +9,4 @@
 - 2026-10-10 — En nginx, regex de rutas sin anclar (`^/(me|...)`) captura `/metal`; anclar siempre con `$` o `/`.
 - 2026-10-10 — `docker run ... | tail` oculta el exit code del comando; verificar con `>/dev/null; echo $?` o `pipefail`.
 - 2026-10-10 — Dependabot no actualiza imágenes referenciadas vía `ARG` en `FROM`; ponerlas literales en `FROM` con tag@digest.
+- 2026-10-10 — CI rojo en el primer push: verify-site agotó el timeout CDP (15 s) en `/image`; sin GPU, WebGL por software (SwiftShader) tarda ~45 s. Reproducido en Linux con Chromium en contenedor. Timeout por comando = red de seguridad, no medida de rendimiento: 90 s configurable. Validar siempre scripts de navegador en Linux sin GPU antes de CI.
