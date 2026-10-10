@@ -180,9 +180,7 @@
         setTimeout(function () { if (menuIsOpen()) closeMore(); }, 1400);
       })
       .catch(function () {
-        var subject = encodeURIComponent("Feedback on Libraries.dev");
-        var body = encodeURIComponent(message + "\n\nFrom " + location.href);
-        fbNoteSet("err", 'Could not send. <a href="mailto:jakubja@gmail.com?subject=' + subject + "&body=" + body + '">Email it instead</a>.');
+        fbNoteSet("err", 'Feedback is collected on <a href="https://github.com/Atlas-6174/source-libraries/issues" rel="noopener">GitHub Issues</a>.');
       })
       .then(function () {
         fbSending = false;
@@ -233,7 +231,7 @@
   var ACTIONS = [
     { label: "Get Pro access", href: "/pro.html" },
     { label: "View on GitHub", href: "https://github.com/Jakubantalik/Libraries.dev", external: true },
-    { label: "Contact support", href: "mailto:jakubja@gmail.com" }
+    { label: "Contact support", href: "https://github.com/Atlas-6174/source-libraries/issues" }
   ];
 
   var searchBtn = document.getElementById("nav-search-btn");

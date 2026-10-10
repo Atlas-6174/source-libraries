@@ -19,10 +19,10 @@
 ## Estado actual (2026-10-10)
 - Git inicializado: `main` = `upstream/main` (bcaf88f); remotos `upstream` (push deshabilitado) y `origin` = github.com/Atlas-6174/source-libraries (vacío, sin push aún).
 - Incremento 1 en rama `chore/bootstrap` (commits 2a312ca + fixes de auditoría: Node 24 LTS, digests, --ignore-scripts, pids): Dockerfile multi-stage, nginx no root, compose endurecido. Build OK; smoke test OK (rutas limpias, redirect /avatars, headers, healthy ~1 s); imagen 36.4 MB gzip.
-- Incremento 2 en rama `feat/open-studio`: Studio abierto (shim offline de pro-client.js), sin llamadas a api.libraries.dev ni analítica, páginas de pago eliminadas (redirigen a /studio/app), CSP. Verificado en Chrome headless: 16 páginas, 0 peticiones a libraries.dev/goatcounter, 0 violaciones CSP; typecheck OK.
+- Incremento 2 en rama `feat/open-studio`: Studio abierto (shim offline de pro-client.js), sin llamadas a api.libraries.dev ni analítica, páginas de pago eliminadas (redirigen a /studio/app), CSP. Verificado en Chrome headless: 16 páginas, 0 peticiones a libraries.dev/goatcounter, 0 violaciones CSP; typecheck OK. Auditoría inc. 2: APROBADA con observaciones; corregidos feedback/contacto, fallback de agent.ts y CSP sin blob:.
 
 ## Próximo paso
-- Auditoría de seguridad del incremento 2; luego incremento 3 (rebranding, textos de venta/terms, mailto de feedback, CI + GHCR, README/LICENSE/NOTICE, HSTS en proxy).
+- Incremento 3: rebranding (nombre definitivo), reescribir privacy.html/terms.html (BLOQUEANTE antes de despliegue público: describen cuentas/Stripe/analítica inexistentes), textos de venta y FAQ de studio.html, footer Sign in en privacy/terms, CI + GHCR, README/LICENSE/NOTICE, HSTS documentado.
 
 ## Bloqueos / preguntas abiertas
 - [NO VERIFICADO jurídicamente] `terms.html` de upstream describe el Studio como contenido Pro aunque su código esté bajo MIT en el repo; recomendado validar con el autor o un abogado antes de difundir públicamente.

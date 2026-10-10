@@ -36,9 +36,8 @@ export class AgentError extends Error {
 function apiBase(): string {
   const injected = window.LibrariesPro?.apiBase;
   if (injected) return injected;
-  return /^(localhost|127\.0\.0\.1)$/.test(location.hostname)
-    ? "http://localhost:8787"
-    : "https://api.libraries.dev";
+  /* Self-hosted: no hosted API; same origin answers 503. */
+  return location.origin;
 }
 
 const MESSAGES: Record<string, string> = {

@@ -17,6 +17,7 @@
 (function () {
   "use strict";
 
+  var ISSUES_URL = "https://github.com/Atlas-6174/source-libraries/issues";
   var UNAVAILABLE = { error: "unavailable" };
   function unavailable() { return Promise.resolve(UNAVAILABLE); }
 
@@ -95,6 +96,16 @@
       var el = document.getElementById(id);
       if (el) el.hidden = true;
     });
+    /* Feedback has no backend here: send people to the issue tracker. The
+       capture-phase listener runs before site.js opens the in-menu form. */
+    var fb = document.getElementById("pm-feedback");
+    if (fb) {
+      fb.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        window.open(ISSUES_URL, "_blank", "noopener");
+      }, true);
+    }
     document.querySelectorAll(".card-copy[data-pro-copy]").forEach(function (btn) {
       btn.hidden = true;
     });

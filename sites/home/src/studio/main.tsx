@@ -165,9 +165,7 @@ function FeedbackPage({ email, onBack, onSent }: { email: string; onBack: () => 
         window.setTimeout(onSent, 1400);
       })
       .catch(() => {
-        const subject = encodeURIComponent("Feedback on Libraries.dev");
-        const body = encodeURIComponent(text + "\n\nFrom " + window.location.href);
-        setNote({ kind: "err", html: `Could not send. <a href="mailto:jakubja@gmail.com?subject=${subject}&body=${body}">Email it instead</a>.` });
+        setNote({ kind: "err", html: `Feedback is collected on <a href="https://github.com/Atlas-6174/source-libraries/issues" rel="noopener">GitHub Issues</a>.` });
       })
       .then(() => setSending(false));
   };
@@ -301,18 +299,10 @@ function AvatarMenu({ email }: { email: string }) {
       >
         <div className="tl-set-slide" data-page={page} ref={slideRef}>
           <div className="t-page" data-page-id="1">
-            <a className="tl-menu-item" href="/account.html" role="menuitem">
-              <span className="tl-menu-item-label">Account</span>
-            </a>
-            <div className="tl-menu-item" role="menuitem" tabIndex={0} onClick={onSignOut} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") onSignOut(); }}>
-              <span className="tl-menu-item-label">Sign out</span>
-            </div>
-            <div className="tl-menu-divider" />
-            <div className="tl-menu-item" role="menuitem" tabIndex={0} onClick={openFeedback} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openFeedback(); } }}>
+            <a className="tl-menu-item" href="https://github.com/Atlas-6174/source-libraries/issues" target="_blank" rel="noopener" role="menuitem">
               <span className="tl-menu-item-label">Feedback</span>
-              <span className="tl-menu-trail"><MenuChevron /></span>
-            </div>
-            <a className="tl-menu-item" href="mailto:jakubja@gmail.com" role="menuitem">
+            </a>
+            <a className="tl-menu-item" href="https://github.com/Atlas-6174/source-libraries/issues" target="_blank" rel="noopener" role="menuitem">
               <span className="tl-menu-item-label">Support</span>
             </a>
           </div>
