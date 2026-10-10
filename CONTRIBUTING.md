@@ -28,5 +28,6 @@ Thanks for helping. A few rules keep this fork easy to sync with upstream:
 ## Licensing
 
 By contributing, you agree that your contributions are licensed under the MIT
-License. New dependencies must use a license allowed by
-`docs/memory/LICENSE_POLICY.md`.
+License. New dependencies must use a permissive license (MIT, BSD, Apache-2.0, ISC or
+similar). Copyleft (GPL, AGPL, SSPL) and source-available licenses are not
+accepted.

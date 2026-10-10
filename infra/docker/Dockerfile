@@ -3,8 +3,7 @@
 # serve the static output from an unprivileged nginx (uid 101, port 8080).
 
 # Base images are pinned by tag and digest directly in FROM (not via ARG) so
-# Dependabot can bump both together. Node 24 LTS: upstream pins Node 20
-# (.node-version), which is past end of life.
+# Dependabot can bump both together. Build stage: current Node LTS line.
 
 # ---------- build ----------
 FROM node:24.21.0-alpine3.23@sha256:9ec4a2e289874ed0d722e1772ec2de45d2801541db8612f3638b26f128c69ac2 AS build

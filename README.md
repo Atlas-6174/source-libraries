@@ -89,7 +89,7 @@ npm run typecheck
 node scripts/verify-site.mjs http://127.0.0.1:8080 "<path to Chrome>"   # network/CSP check
 ```
 
-Node 24 is used for the container build. Upstream pins Node 20 in `.node-version`.
+Use Node 24 (LTS), the version the container build uses.
 
 ## Syncing with upstream
 
@@ -103,6 +103,15 @@ git fetch upstream
 git checkout -b chore/sync-upstream-YYYY-MM-DD main
 git merge upstream/main      # resolve conflicts in the fork's files
 # verify (see Development), then open a pull request to main
+```
+
+This fork removes upstream directories it does not ship: native ports
+(`packages/*/ports`), the standalone demo sites (`sites/beam`, `sites/gooey`,
+`sites/orbs`), `services/`, `cli/`, `skills/` and `Package.swift`. When a sync
+reports a modify/delete conflict on them, keep the deletion:
+
+```bash
+git status --short | awk '$1=="DU"||$1=="UD"{print $2}' | xargs git rm -q
 ```
 
 The fork keeps its changes to upstream files small so that syncing stays cheap:

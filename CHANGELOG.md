@@ -6,6 +6,14 @@ All notable changes to this fork are documented here. The format follows
 
 ## [Unreleased]
 
+### Removed
+- Upstream directories this fork does not ship: native iOS/React Native ports,
+  the standalone beam/gooey/orbs demo sites, `services/`, `cli/`, `skills/`,
+  `Package.swift` and `.node-version`. This drops the lockfiles behind most
+  Dependabot alerts; none of it was part of the image.
+- Maintainer tooling (`.claude/`, `CLAUDE.md`) and working notes
+  (`docs/memory/`) are no longer published.
+
 ### Changed
 - Build stage on Node 24.21.0 (Alpine 3.23), the current Node 24 LTS patch
   level; the Alpine 3.22 variant no longer receives Node 24 releases.
