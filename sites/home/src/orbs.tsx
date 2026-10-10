@@ -10,7 +10,8 @@ import { PgTabs } from "./examples/PgTabs";
 /* The tuning panel is a dev tool: localhost, or ?dev anywhere. */
 const SHOW_GRAVITY_DEV =
   typeof location !== "undefined" &&
-  (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) || new URLSearchParams(location.search).has("dev"));
+  // Self-hosted: localhost is production here; dev tools need `vite dev` or ?dev.
+  (import.meta.env.DEV || new URLSearchParams(location.search).has("dev"));
 
 /* Orb detail page — playground island (stage + controls + live snippet).
    Mirrors the live playground at sites/orbs/components/Playground.tsx:

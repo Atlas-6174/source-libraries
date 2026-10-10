@@ -11,12 +11,8 @@ import { demoFlags, useDemoFlag, type DemoFlagKey } from "./demoFlags";
    public site matches none of these. */
 export const SHOW_DEMO_DEV =
   typeof location !== "undefined" &&
-  (/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) ||
-    /^10\./.test(location.hostname) ||
-    /^192\.168\./.test(location.hostname) ||
-    /^172\.(1[6-9]|2\d|3[01])\./.test(location.hostname) ||
-    /\.local$/.test(location.hostname) ||
-    new URLSearchParams(location.search).has("dev"));
+  // Self-hosted: localhost and LAN hosts are production here.
+  (import.meta.env.DEV || new URLSearchParams(location.search).has("dev"));
 
 type Flag = { key: DemoFlagKey; label: string; on: string; off: string; hint: string };
 

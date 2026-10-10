@@ -68,7 +68,8 @@ const EASES: Array<[string, string]> = [
 ];
 const SHOW_DEV =
   typeof location !== "undefined" &&
-  (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) || new URLSearchParams(location.search).has("dev"));
+  // Self-hosted: localhost is production here; dev tools need `vite dev` or ?dev.
+  (import.meta.env.DEV || new URLSearchParams(location.search).has("dev"));
 
 function RailDevPanel({
   rail,
