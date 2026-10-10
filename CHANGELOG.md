@@ -6,6 +6,8 @@ All notable changes to this fork are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-10
+
 ### Added
 - Docker image (Node 24 build, unprivileged nginx 1.30 runtime) and hardened
   `docker-compose.yml`: read-only filesystem, all capabilities dropped,
@@ -47,3 +49,6 @@ All notable changes to this fork are documented here. The format follows
 - Developer tuning panels no longer appear on localhost or LAN hosts, where
   self-hosted users run the site. They now show only under `vite dev` or with
   `?dev`.
+
+[Unreleased]: https://github.com/Atlas-6174/source-libraries/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/Atlas-6174/source-libraries/releases/tag/v0.1.0
