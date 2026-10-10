@@ -400,14 +400,14 @@ function TopBar({ email, pro }: { email: string | null; pro: boolean }) {
             <svg viewBox="0 0 22.6705 14.6705" fill="none" xmlns="http://www.w3.org/2000/svg">
               {/* brand-draw + pathLength drive the hover redraw in site.css —
                   without them the mark is inert here but animates elsewhere. */}
-              <path className="brand-draw" d="M21.3352 10.3354L6.89079 13.3354L18.0019 7.33536L1.33524 9.33536L19.3352 1.33536L1.33524 4.33536L9.33524 1.33536" stroke="currentColor" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round" pathLength={100} />
+              <path className="brand-draw" d="M2 13.33V1.4M6.6 13.33V1.4M11.2 13.33V3.6M14.6 1.9L20.9 12.9" stroke="currentColor" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round" pathLength={100} />
             </svg>
           </span>
-          <span className="brand-word"><span className="brand-word-strong">Libraries</span><span className="brand-word-dim">.dev</span></span>
+          <span className="brand-word"><span className="brand-word-strong">Source</span><span className="brand-word-dim"> Libraries</span></span>
         </a>
         <span className="st-top-sep" aria-hidden="true" />
         <span className="st-top-name">
-          Studio <span className="st-top-chip">Pro</span>
+          Studio
         </span>
       </div>
       {/* The address itself belongs on the account page — here the avatar

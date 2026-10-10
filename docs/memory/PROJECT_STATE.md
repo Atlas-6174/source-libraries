@@ -21,9 +21,10 @@
 - Incremento 1 en rama `chore/bootstrap` (commits 2a312ca + fixes de auditoría: Node 24 LTS, digests, --ignore-scripts, pids): Dockerfile multi-stage, nginx no root, compose endurecido. Build OK; smoke test OK (rutas limpias, redirect /avatars, headers, healthy ~1 s); imagen 36.4 MB gzip.
 - Incremento 2 en rama `feat/open-studio`: Studio abierto (shim offline de pro-client.js), sin llamadas a api.libraries.dev ni analítica, páginas de pago eliminadas (redirigen a /studio/app), CSP. Verificado en Chrome headless: 16 páginas, 0 peticiones a libraries.dev/goatcounter, 0 violaciones CSP; typecheck OK. Auditoría inc. 2: APROBADA con observaciones; corregidos feedback/contacto, fallback de agent.ts y CSP sin blob:.
 - Incremento 3a en rama `chore/publishable-repo`: privacy/terms genéricos, README/LICENSE/NOTICE/CHANGELOG/SECURITY/CONTRIBUTING, ADR-0001, CI (typecheck, presupuesto de imagen, Trivy, verify-site) + release GHCR multi-arch + Dependabot; workflows upstream eliminados; hook post-edit corregido.
+- Auditoría 3a aplicada (fix/audit-3a, adeb622). Incremento 3b en rama `feat/rebrand`: rebranding completo, copy sin Pro, logos/testimonios eliminados, paneles dev solo en `vite dev`/`?dev`. verify-site 16/16, typecheck OK, presupuestos OK (Studio 389/450 KB, máx. 195/250 KB, imagen 36.5/50 MB).
 
 ## Próximo paso
-- Auditoría de seguridad de 3a; luego incremento 3b (rebranding visual: wordmark/favicon, títulos/meta, textos de venta, FAQ Studio, nav site.js, crédito visible al autor). Tras 3b: primer release v0.1.0 a GHCR. Push a origin: requiere confirmación.
+- Push de ramas a origin y PR(s) a main (requiere confirmación del usuario); tras merge y CI verde, tag v0.1.0 → release GHCR.
 
 ## Bloqueos / preguntas abiertas
 - [NO VERIFICADO jurídicamente] `terms.html` de upstream describe el Studio como contenido Pro aunque su código esté bajo MIT en el repo; recomendado validar con el autor o un abogado antes de difundir públicamente.

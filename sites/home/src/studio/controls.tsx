@@ -998,7 +998,7 @@ function buildAgentPrompt(library: string, meta: PromptMeta): string {
     "Install:",
     `npm install ${meta.pkg}`,
     "",
-    "Use exactly this configuration — it was tuned by hand in the Libraries.dev Studio:",
+    "Use exactly this configuration — it was tuned by hand in the Studio:",
     "",
     meta.snippet,
     "",
