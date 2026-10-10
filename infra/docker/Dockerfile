@@ -29,7 +29,8 @@ FROM nginxinc/nginx-unprivileged:1.30.5-alpine@sha256:15c994d10d6d78658721c3bcaf
 LABEL org.opencontainers.image.title="source-libraries" \
       org.opencontainers.image.description="Self-hosted build of the MIT-licensed Libraries.dev UI libraries and site" \
       org.opencontainers.image.source="https://github.com/Atlas-6174/source-libraries" \
-      org.opencontainers.image.licenses="MIT"
+      org.opencontainers.image.licenses="MIT" \
+      org.opencontainers.image.authors="Atlas-6174 (https://github.com/Atlas-6174)"
 
 # Pick up Alpine security fixes released after the base image was built
 # (e.g. CVE-2026-4775 in tiff), then drop back to the image's unprivileged user.

@@ -6,6 +6,10 @@ All notable changes to this fork are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+- Maintainer credit for Atlas-6174 in the site footer, terms, README,
+  LICENSE, NOTICE and the image's OCI `authors` label.
+
 ## [0.1.0] - 2026-10-10
 
 ### Added

@@ -20,6 +20,12 @@ static container: no accounts, no payments, no analytics, no backend.
 > recipes, the Pro skill) is proprietary and is **not** included. See
 > [ADR-0001](docs/adr/0001-fork-scope.md).
 
+## Maintainer
+
+Source Libraries is created and maintained by [Atlas-6174](https://github.com/Atlas-6174). It is
+the self-hosted fork with the Studio open to everyone. The libraries and the
+original site were created by [Jakub Antalik](https://github.com/Jakubantalik).
+
 ## Requirements
 
 - Docker Engine 25+ with Compose v2 (Docker Desktop on macOS and Windows; WSL2
