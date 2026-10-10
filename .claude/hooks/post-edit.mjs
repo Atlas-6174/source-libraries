@@ -24,7 +24,10 @@ if (linters[ext]) {
   const [cmd, args] = linters[ext];
   const r = run(cmd, args, cwd);
   if (r === null) missing.push(cmd === "npx" ? "eslint" : cmd);
-  else if (r.code !== 0 && !/could not determine executable|ESLint couldn't find a config/i.test(r.out))
+  // npx --no-install without the package installed: npm <= 10 says "could not
+  // determine executable", npm >= 11 says "npx canceled due to missing packages".
+  else if (/could not determine executable|npx canceled due to missing packages/i.test(r.out)) missing.push("eslint");
+  else if (r.code !== 0 && !/ESLint couldn't find a config/i.test(r.out))
     problems.push(`Linter (${cmd === "npx" ? "eslint" : cmd}):\n${r.out.slice(0, 3000)}`);
   else if (ext === ".go" && r.out) problems.push(`gofmt: el archivo no está formateado.`);
 }
