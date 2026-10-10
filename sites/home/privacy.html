@@ -29,25 +29,22 @@
   <script>document.documentElement.classList.add("css-ready");</script>
   <meta name="color-scheme" content="dark" />
 
-  <title>Privacy Policy - Libraries.dev</title>
+  <title>Privacy Notice - Source Libraries</title>
   <meta
     name="description"
-    content="How Libraries.dev handles your data: what we collect for accounts and Pro, who processes it (Stripe, Resend, Cloudflare), and your rights under GDPR."
+    content="What data this self-hosted Source Libraries site handles: no accounts, cookies or analytics; server logs, local browser storage and Google Fonts."
   />
-  <meta name="author" content="Libraries.dev" />
+  <meta name="author" content="Source Libraries" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#121212" />
-
-  <link rel="canonical" href="https://libraries.dev/privacy.html" />
 
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/assets/favicon.svg" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Libraries.dev" />
-  <meta property="og:url" content="https://libraries.dev/privacy.html" />
-  <meta property="og:title" content="Privacy Policy - Libraries.dev" />
-  <meta property="og:description" content="How Libraries.dev handles your data: what we collect for accounts and Pro, who processes it (Stripe, Resend, Cloudflare), and your rights under GDPR." />
+  <meta property="og:site_name" content="Source Libraries" />
+  <meta property="og:title" content="Privacy Notice - Source Libraries" />
+  <meta property="og:description" content="What data this self-hosted Source Libraries site handles: no accounts, cookies or analytics; server logs, local browser storage and Google Fonts." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -298,124 +295,86 @@
   <main id="main">
     <div class="wrap">
       <header class="doc-head">
-        <p class="eyebrow"><a href="/">Libraries.dev</a></p>
-        <h1>Privacy Policy</h1>
-        <p class="updated">Last updated September 2026</p>
+        <p class="eyebrow"><a href="/">Source Libraries</a></p>
+        <h1>Privacy Notice</h1>
+        <p class="updated">Last updated October 2026</p>
         <p class="lede">
-          This policy explains what data Libraries.dev collects when you use the site,
-          create an account, or subscribe to Pro — why we collect it, who processes it on
-          our behalf, and the rights you have over it. We collect as little as the product
-          needs to work, and we never sell your data.
+          This site is a self-hosted build of open-source UI libraries. It has no accounts,
+          no payments, no analytics and no cookies. This notice explains the little data
+          that still moves when you use it, and who is responsible for it.
         </p>
       </header>
 
       <section>
-        <h2>Who we are</h2>
+        <h2>Who runs this site</h2>
         <p>
-          Libraries.dev is operated by <strong>Jakub Antalik</strong> ("we", "us"). For
-          anything in this policy — including data requests — contact
-          <a href="https://github.com/Atlas-6174/source-libraries/issues" rel="noopener">jakubja@gmail.com</a>. For visitors in the EU/EEA
-          and UK, we act as the <strong>data controller</strong> for the personal data
-          described below.
+          This instance is operated by whoever deployed it (the "operator"). It is built
+          from the <a href="https://github.com/Atlas-6174/source-libraries" rel="noopener">Source Libraries</a> project, an
+          independent fork of the MIT-licensed libraries published by Jakub Antalik at
+          Libraries.dev. Neither the fork's maintainers nor Libraries.dev operate this
+          instance or receive data from it.
+        </p>
+        <p>
+          <strong>Operators:</strong> name yourself and a contact address here before
+          making the site available to others, and adjust the sections below to match
+          your setup (for example, a reverse proxy or log retention).
         </p>
       </section>
 
       <section>
-        <h2>What we collect</h2>
-        <p>Most of the site — browsing the libraries, trying the playgrounds, installing the free packages from npm — needs no account and collects no personal data. The data below applies once you sign in or subscribe.</p>
-        <ul>
-          <li><strong>Your email address</strong> — the anchor for your account and passwordless sign-in. You give it to us when you subscribe or sign in.</li>
-          <li><strong>Billing details</strong> — handled by Stripe. We store your Stripe customer and subscription identifiers and your plan status; <strong>we never see or store your card number</strong> — it is entered directly on Stripe's hosted checkout.</li>
-          <li><strong>Team membership</strong> — if you own or join a team, we store the team name, its members, roles, and pending invitations (invited email addresses).</li>
-          <li><strong>Sign-in &amp; access records</strong> — short-lived login tokens, active sessions, and an audit log of protected downloads and auth events. IP addresses in that log are stored only as a <strong>salted hash</strong>, never in the clear.</li>
-          <li><strong>Studio agent requests</strong> — when you use the Agent tab in the Studio, the text you type, the current parameter values, and the recent turns of that conversation are sent to our AI provider to produce the answer. We also keep an <strong>anonymised copy of the text</strong> to improve the agent — see the next section for exactly what that means, and how to turn it off.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>How we use it, and our legal basis</h2>
-        <p>Under the GDPR, we rely on the following bases:</p>
-        <ul>
-          <li><strong>To provide the service you asked for</strong> (contract) — authenticate you, unlock and deliver the Studio and Pro content, manage your team, and process your subscription.</li>
-          <li><strong>To send transactional email</strong> (contract) — magic sign-in links, team invitations, and payment receipts. These are not marketing; we don't send marketing email without your consent.</li>
-          <li><strong>To keep the service secure</strong> (legitimate interest) — rate-limiting, abuse and fraud prevention, and the access audit log.</li>
-          <li><strong>To meet legal obligations</strong> — e.g. retaining billing records for tax and accounting.</li>
-          <li><strong>To improve the Studio agent</strong> (legitimate interest) — we keep one record per agent request containing the library, the outcome (applied, declined, rebuilt, error), a few counts, and the text of your request <strong>with personal details removed</strong> (email addresses, links, phone numbers, long numbers, @handles and key-like strings are replaced with placeholders) and cut to 300 characters. The record carries <strong>no user identifier</strong>, session, or IP address, so it cannot be linked to you or to your other requests. The agent's replies, your conversation history and any code it generates are not kept. You can turn this off at any time under <strong>Studio agent analytics</strong> on your <a href="/account.html">account</a> page, and we also honour the <em>Global Privacy Control</em> and <em>Do Not Track</em> browser signals — when off, the text is not stored at all.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Who processes your data</h2>
-        <p>We use a small set of trusted providers ("processors") to run the service. They only process your data on our instructions, for the purposes below.</p>
-        <div class="proc-scroll">
-          <table class="proc">
-            <thead><tr><th>Provider</th><th>Purpose</th><th>Data</th></tr></thead>
-            <tbody>
-              <tr><td>Stripe</td><td>Payments &amp; subscriptions</td><td>Email, card details (entered directly with Stripe), billing &amp; plan status</td></tr>
-              <tr><td>Resend</td><td>Transactional email</td><td>Email address, message content (sign-in / invite links)</td></tr>
-              <tr><td>Cloudflare</td><td>Hosting, database &amp; file storage</td><td>Account &amp; team data, sessions, hashed access logs, Pro content delivery, standard web-server request logs, anonymised Studio agent records</td></tr>
-              <tr><td>Anthropic</td><td>Studio agent (AI model)</td><td>The text of your agent requests, the current parameter values and recent turns of that conversation — sent only when you use the Agent tab. Under Anthropic's commercial API terms this data is not used to train its models.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p>Each provider maintains its own privacy and security terms (<a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a>, <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resend</a>, <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare</a>, <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic</a>). We do <strong>not</strong> sell or rent your personal data, and we don't share it with advertisers.</p>
-      </section>
-
-      <section>
-        <h2>Cookies</h2>
+        <h2>What this site collects</h2>
+        <p>Nothing you enter is sent to the operator. There are no sign-in forms, no newsletters and no feedback forms that submit data.</p>
         <p>
-          We use a single <strong>essential cookie</strong> — the session cookie — to keep you
-          signed in. It is <code>HttpOnly</code>, <code>Secure</code>, and set only after you sign in;
-          it carries no tracking data and expires when your session ends. We use no advertising,
-          analytics, or third-party tracking cookies — so there is no cookie consent banner to
-          click through.
+          <strong>Server logs.</strong> Like any web server, the nginx server behind this
+          site records each request: IP address, date and time, requested URL, response
+          status and browser user agent. Logs go to the container's standard output; how
+          long they are kept depends on the operator's configuration.
         </p>
       </section>
 
       <section>
-        <h2>How long we keep it</h2>
-        <ul>
-          <li><strong>Account &amp; team data</strong> — for as long as your account exists.</li>
-          <li><strong>Sessions &amp; login tokens</strong> — short-lived; login links expire in minutes, sessions in weeks.</li>
-          <li><strong>Access &amp; audit logs</strong> — kept only as long as needed for security, then pruned.</li>
-          <li><strong>Anonymised Studio agent records</strong> — three months, then deleted automatically. Because they carry no identifier, they cannot be retrieved or deleted per person; turning the setting off stops new ones.</li>
-          <li><strong>Billing records</strong> — retained as required by tax and accounting law, even after you cancel.</li>
-        </ul>
+        <h2>What stays in your browser</h2>
+        <p>
+          Some preferences are saved in your browser's local storage under keys that
+          start with <code>ldev:</code>: the Studio theme and layout, the presets you save
+          in the Studio, and a cached GitHub star count. They never leave your device;
+          clear your site data to remove them.
+        </p>
+        <p>
+          <strong>Microphone.</strong> The Voice demos ask for microphone access only when
+          you start them. The audio is analysed locally to drive the animation and is
+          never recorded or uploaded.
+        </p>
       </section>
 
       <section>
-        <h2>International transfers</h2>
+        <h2>Third parties your browser contacts</h2>
+        <p>Loading these pages makes your browser request resources directly from:</p>
+        <ul>
+          <li><strong>Google Fonts</strong> (fonts.googleapis.com, fonts.gstatic.com), for the typefaces. Google receives your IP address and user agent.</li>
+          <li><strong>npm</strong> (api.npmjs.org) and <strong>GitHub</strong> (api.github.com), for public download and star counts.</li>
+        </ul>
         <p>
-          We host in Cloudflare's EU region where possible, and our email region is the EU (Ireland).
-          Some processors (e.g. Stripe) may process data outside the EEA; where they do, they rely on
-          appropriate safeguards such as the EU Standard Contractual Clauses.
+          Links to GitHub, X or npm take you to those services, whose own privacy policies
+          apply. Feedback and support are handled through
+          <a href="https://github.com/Atlas-6174/source-libraries/issues" rel="noopener">GitHub Issues</a>; anything you post there is
+          public and governed by GitHub.
         </p>
       </section>
 
       <section>
         <h2>Your rights</h2>
-        <p>If you're in the EU/EEA or UK, you can ask us to:</p>
-        <ul>
-          <li><strong>Access</strong> the personal data we hold about you, or receive a copy (portability).</li>
-          <li><strong>Correct</strong> data that's wrong or out of date.</li>
-          <li><strong>Delete</strong> your account and personal data (subject to billing records we must keep by law).</li>
-          <li><strong>Object to or restrict</strong> certain processing.</li>
-        </ul>
         <p>
-          Email <a href="https://github.com/Atlas-6174/source-libraries/issues" rel="noopener">jakubja@gmail.com</a> and we'll action it. You can
-          delete most account data yourself from your <a href="/account.html">account</a>. You also have
-          the right to complain to your local data protection authority.
+          Depending on where you live (for example under the GDPR or Mexico's LFPDPPP), you
+          may have rights to access, correct or delete personal data, such as entries in
+          the server logs. Contact the operator of this instance to exercise them.
         </p>
       </section>
 
       <section>
-        <h2>Children</h2>
-        <p>Libraries.dev is a developer tool and isn't directed at children. We don't knowingly collect data from anyone under 16.</p>
-      </section>
-
-      <section>
-        <h2>Changes to this policy</h2>
-        <p>If we make material changes, we'll update the date above and, where appropriate, notify you by email. Continued use after a change means you accept the updated policy.</p>
+        <h2>Changes to this notice</h2>
+        <p>Changes are published on this page with a new date above.</p>
+        <p><em>This notice is a template for self-hosted deployments, not legal advice.</em></p>
       </section>
 
       <footer class="footer">
@@ -447,11 +406,9 @@
               <a href="/">Home</a>
               <a href="/studio.html">Studio</a>
               <a href="/how-to-use.html">How to use</a>
-              <a href="/pro.html">Get Pro</a>
             </div>
             <div class="footer-col">
-              <p class="footer-col-title">Legal &amp; Account</p>
-              <a href="/pro.html" id="footer-signin">Sign in</a>
+              <p class="footer-col-title">Legal</p>
               <a href="/terms.html">Terms</a>
               <a href="/privacy.html">Privacy</a>
               <a href="https://github.com/Atlas-6174/source-libraries/issues" rel="noopener">Contact</a>
@@ -465,6 +422,5 @@
       </footer>
     </div>
   </main>
-  <!-- GoatCounter: privacy-friendly page views, no cookies. -->
 </body>
 </html>
