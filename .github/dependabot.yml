@@ -6,6 +6,15 @@ updates:
     directory: /infra/docker
     schedule:
       interval: weekly
+    ignore:
+      # Build stage stays on the current Node LTS line; moving to the next
+      # LTS (even major, after its October LTS date) is a manual decision.
+      - dependency-name: node
+        update-types: ["version-update:semver-major"]
+      # nginx: odd minors are mainline, even minors are stable. Take only
+      # patches of the current stable branch; the next stable is manual.
+      - dependency-name: nginxinc/nginx-unprivileged
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
     commit-message:
       prefix: chore
       include: scope
