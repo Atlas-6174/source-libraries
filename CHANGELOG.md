@@ -6,9 +6,15 @@ All notable changes to this fork are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-10
+
 ### Added
 - Maintainer credit for Atlas-6174 in the site footer, terms, README,
   LICENSE, NOTICE and the image's OCI `authors` label.
+
+### Fixed
+- CI browser check: 90 s DevTools timeout, since software WebGL on
+  GPU-less runners keeps `/image` busy for about 45 s.
 
 ## [0.1.0] - 2026-10-10
 
@@ -54,5 +60,6 @@ All notable changes to this fork are documented here. The format follows
   self-hosted users run the site. They now show only under `vite dev` or with
   `?dev`.
 
-[Unreleased]: https://github.com/Atlas-6174/source-libraries/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/Atlas-6174/source-libraries/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/Atlas-6174/source-libraries/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/Atlas-6174/source-libraries/releases/tag/v0.1.0
