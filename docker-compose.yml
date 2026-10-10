@@ -21,6 +21,7 @@ services:
         limits:
           cpus: "0.50"
           memory: 128M
+          pids: 100
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:8080/healthz"]
       interval: 30s
