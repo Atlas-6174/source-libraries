@@ -1,0 +1,17 @@
+Source Libraries
+Copyright (c) 2026 Source Libraries contributors
+
+This project is a fork of Libraries.dev (https://github.com/Jakubantalik/Libraries.dev),
+Copyright (c) 2026 Jakub Antalik, licensed under the MIT License.
+
+It includes software developed by Paper Design, Inc.:
+
+  Paper Shaders (https://github.com/paper-design/shaders)
+  Copyright (c) Paper Design, Inc.
+  Licensed under the Apache License, Version 2.0
+  http://www.apache.org/licenses/LICENSE-2.0
+
+See packages/metal-fx/NOTICE for exactly which parts are used.
+
+"Libraries.dev" and "Libraries Pro" are names of the original project. They are
+used only to credit it, and this project is not affiliated with or endorsed by it.

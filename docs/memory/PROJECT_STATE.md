@@ -1,7 +1,7 @@
 # Estado del proyecto
 
 ## Brief (aprobado 2026-10-10)
-- **Qué es:** fork self-hosted y rebrandeado (`open-ui-libraries`, nombre provisional) del monorepo MIT `Jakubantalik/Libraries.dev` (upstream analizado: commit `bcaf88f`, 2026-10-09).
+- **Qué es:** fork self-hosted y rebrandeado **Source Libraries** (wordmark tipográfico; aviso legal genérico) del monorepo MIT `Jakubantalik/Libraries.dev` (upstream analizado: commit `bcaf88f`, 2026-10-09).
 - **Problema que resuelve:** el sitio en la nube exige suscripción Pro para abrir el Studio (workbench de personalización); el código del Studio es MIT y se publica abierto, sin backend de pago, desplegable con Docker.
 - **Usuarios:** el mantenedor y usuarios finales externos que lo levantan en local con `docker compose`.
 - **Criterio de éxito:** `docker compose up -d` sirve el sitio + Studio abierto en Linux/macOS/Windows; sin llamadas a `api.libraries.dev`; presupuestos de `PERF_BUDGETS.md` cumplidos; imagen publicada en GHCR.
@@ -20,10 +20,10 @@
 - Git inicializado: `main` = `upstream/main` (bcaf88f); remotos `upstream` (push deshabilitado) y `origin` = github.com/Atlas-6174/source-libraries (vacío, sin push aún).
 - Incremento 1 en rama `chore/bootstrap` (commits 2a312ca + fixes de auditoría: Node 24 LTS, digests, --ignore-scripts, pids): Dockerfile multi-stage, nginx no root, compose endurecido. Build OK; smoke test OK (rutas limpias, redirect /avatars, headers, healthy ~1 s); imagen 36.4 MB gzip.
 - Incremento 2 en rama `feat/open-studio`: Studio abierto (shim offline de pro-client.js), sin llamadas a api.libraries.dev ni analítica, páginas de pago eliminadas (redirigen a /studio/app), CSP. Verificado en Chrome headless: 16 páginas, 0 peticiones a libraries.dev/goatcounter, 0 violaciones CSP; typecheck OK. Auditoría inc. 2: APROBADA con observaciones; corregidos feedback/contacto, fallback de agent.ts y CSP sin blob:.
+- Incremento 3a en rama `chore/publishable-repo`: privacy/terms genéricos, README/LICENSE/NOTICE/CHANGELOG/SECURITY/CONTRIBUTING, ADR-0001, CI (typecheck, presupuesto de imagen, Trivy, verify-site) + release GHCR multi-arch + Dependabot; workflows upstream eliminados; hook post-edit corregido.
 
 ## Próximo paso
-- Incremento 3: rebranding (nombre definitivo), reescribir privacy.html/terms.html (BLOQUEANTE antes de despliegue público: describen cuentas/Stripe/analítica inexistentes), textos de venta y FAQ de studio.html, footer Sign in en privacy/terms, CI + GHCR, README/LICENSE/NOTICE, HSTS documentado.
+- Auditoría de seguridad de 3a; luego incremento 3b (rebranding visual: wordmark/favicon, títulos/meta, textos de venta, FAQ Studio, nav site.js, crédito visible al autor). Tras 3b: primer release v0.1.0 a GHCR. Push a origin: requiere confirmación.
 
 ## Bloqueos / preguntas abiertas
 - [NO VERIFICADO jurídicamente] `terms.html` de upstream describe el Studio como contenido Pro aunque su código esté bajo MIT en el repo; recomendado validar con el autor o un abogado antes de difundir públicamente.
-- Nombre/branding definitivo del fork.
