@@ -25,7 +25,7 @@ import { StudioThemeContext } from "./controls";
    everyone again: /me entitlement still drives the "Get Pro" chip either
    way, so nothing else has to change. */
 
-const GATE_ENABLED = true;
+const GATE_ENABLED = false;
 
 type GateState = "pending" | "locked" | "open";
 
@@ -116,7 +116,8 @@ function useProGate(): { gate: GateState; email: string | null; entitled: boolea
    in React: page two of the menu behind a back button, a message, an
    optional address (the signed-in one filled in), sent to the API with
    the mailto fallback. */
-const FEEDBACK_API = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname) ? "http://localhost:8787" : "https://api.libraries.dev";
+// Self-hosted: same origin, no feedback backend (the server answers 503).
+const FEEDBACK_API = "";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MenuChevron = () => (
   <span className="tl-menu-chevr" aria-hidden="true">

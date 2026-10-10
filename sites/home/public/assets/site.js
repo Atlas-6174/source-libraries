@@ -96,9 +96,8 @@
   var fbEmail = fbForm && fbForm.querySelector(".pm-feedback-email");
   var fbNote = fbForm && fbForm.querySelector(".pm-feedback-note");
   var fbBtn = fbForm && fbForm.querySelector(".pm-feedback-btn");
-  var FEEDBACK_API = /^(localhost|127\.0\.0\.1)$/.test(location.hostname)
-    ? "http://localhost:8787"
-    : "https://api.libraries.dev";
+  // Self-hosted: same origin, no feedback backend (the server answers 503).
+  var FEEDBACK_API = "";
   var fbSending = false;
 
   function syncSlideHeight() {

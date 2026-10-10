@@ -19,10 +19,10 @@
 ## Estado actual (2026-10-10)
 - Git inicializado: `main` = `upstream/main` (bcaf88f); remotos `upstream` (push deshabilitado) y `origin` = github.com/Atlas-6174/source-libraries (vacío, sin push aún).
 - Incremento 1 en rama `chore/bootstrap` (commits 2a312ca + fixes de auditoría: Node 24 LTS, digests, --ignore-scripts, pids): Dockerfile multi-stage, nginx no root, compose endurecido. Build OK; smoke test OK (rutas limpias, redirect /avatars, headers, healthy ~1 s); imagen 36.4 MB gzip.
-- JS inicial: 11/12 páginas ≤ 250 KB gzip; `studio/app.html` = 401 KB (upstream sin cambios) → excede presupuesto, pendiente decisión.
+- Incremento 2 en rama `feat/open-studio`: Studio abierto (shim offline de pro-client.js), sin llamadas a api.libraries.dev ni analítica, páginas de pago eliminadas (redirigen a /studio/app), CSP. Verificado en Chrome headless: 16 páginas, 0 peticiones a libraries.dev/goatcounter, 0 violaciones CSP; typecheck OK.
 
 ## Próximo paso
-- Auditoría incremento 1: APROBADA con observaciones (resueltas; HSTS → documentar en proxy TLS, incremento 3). Decidir presupuesto del Studio; incremento 2 (desbloqueo y desacople de api.libraries.dev + CSP).
+- Auditoría de seguridad del incremento 2; luego incremento 3 (rebranding, textos de venta/terms, mailto de feedback, CI + GHCR, README/LICENSE/NOTICE, HSTS en proxy).
 
 ## Bloqueos / preguntas abiertas
 - [NO VERIFICADO jurídicamente] `terms.html` de upstream describe el Studio como contenido Pro aunque su código esté bajo MIT en el repo; recomendado validar con el autor o un abogado antes de difundir públicamente.

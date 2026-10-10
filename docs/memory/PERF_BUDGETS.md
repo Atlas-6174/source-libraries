@@ -10,7 +10,8 @@
 | LCP | ≤ 2.5 s | Lighthouse CI |
 | INP | ≤ 200 ms | Lighthouse CI / RUM |
 | CLS | ≤ 0.1 | Lighthouse CI |
-| JS inicial por página (gzip) | ≤ 250 KB [SUPUESTO: WebGL/three; recalibrar tras medir en incremento 1] | Análisis de bundle en CI |
+| JS inicial por página (gzip) | ≤ 250 KB (medido: 11/12 páginas cumplen) | Análisis de bundle en CI |
+| JS inicial Studio `studio/app.html` (gzip) | ≤ 450 KB (medido 401 KB; herramienta de escritorio, código upstream intacto) | Análisis de bundle en CI |
 | CSS inicial (gzip) | ≤ 50 KB | Análisis de bundle en CI |
 | Lighthouse Performance | ≥ 90 (móvil) | Lighthouse CI |
 
