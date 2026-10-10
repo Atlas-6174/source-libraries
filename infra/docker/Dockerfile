@@ -7,7 +7,7 @@
 # (.node-version), which is past end of life.
 
 # ---------- build ----------
-FROM node:24.16.0-alpine3.22@sha256:191c9f0080fcbbc6547a85dc0ff7988072214a355aabdc1d2ec55a7dae5eea8a AS build
+FROM node:24.21.0-alpine3.23@sha256:9ec4a2e289874ed0d722e1772ec2de45d2801541db8612f3638b26f128c69ac2 AS build
 WORKDIR /app
 ENV CI=true \
     NPM_CONFIG_AUDIT=false \

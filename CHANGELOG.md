@@ -6,6 +6,12 @@ All notable changes to this fork are documented here. The format follows
 
 ## [Unreleased]
 
+### Changed
+- Build stage on Node 24.21.0 (Alpine 3.23), the current Node 24 LTS patch
+  level; the Alpine 3.22 variant no longer receives Node 24 releases.
+- Dependabot proposes only Node 24.x and nginx 1.30.x (stable) patch
+  updates; moves to a new LTS or stable branch are deliberate.
+
 ## [0.1.1] - 2026-10-10
 
 ### Added
