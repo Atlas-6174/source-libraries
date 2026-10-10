@@ -2,13 +2,12 @@
 # Multi-stage build: compile every library + the home site with Node, then
 # serve the static output from an unprivileged nginx (uid 101, port 8080).
 
-# Pinned by tag and digest; bump both together (Dependabot, docker ecosystem).
-# Node 24 LTS: upstream pins Node 20 (.node-version), which is past end of life.
-ARG NODE_IMAGE=node:24.16.0-alpine3.22@sha256:191c9f0080fcbbc6547a85dc0ff7988072214a355aabdc1d2ec55a7dae5eea8a
-ARG NGINX_IMAGE=nginxinc/nginx-unprivileged:1.30.5-alpine@sha256:15c994d10d6d78658721c3bcafff14cb281fba2a4bdf9d5ba92c416a472516e3
+# Base images are pinned by tag and digest directly in FROM (not via ARG) so
+# Dependabot can bump both together. Node 24 LTS: upstream pins Node 20
+# (.node-version), which is past end of life.
 
 # ---------- build ----------
-FROM ${NODE_IMAGE} AS build
+FROM node:24.16.0-alpine3.22@sha256:191c9f0080fcbbc6547a85dc0ff7988072214a355aabdc1d2ec55a7dae5eea8a AS build
 WORKDIR /app
 ENV CI=true \
     NPM_CONFIG_AUDIT=false \
@@ -25,7 +24,7 @@ RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts
 RUN npm run build:site-home
 
 # ---------- runtime ----------
-FROM ${NGINX_IMAGE} AS runtime
+FROM nginxinc/nginx-unprivileged:1.30.5-alpine@sha256:15c994d10d6d78658721c3bcafff14cb281fba2a4bdf9d5ba92c416a472516e3 AS runtime
 
 LABEL org.opencontainers.image.title="source-libraries" \
       org.opencontainers.image.description="Self-hosted build of the MIT-licensed Libraries.dev UI libraries and site" \

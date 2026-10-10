@@ -33,6 +33,8 @@ export class AgentError extends Error {
    credentials the same way pro-client.js does. Falling back to the
    production host keeps the chat working on a page that loaded without
    pro-client.js, and localhost:8787 is the Worker's dev port. */
+const AGENT_ENABLED = false;
+
 function apiBase(): string {
   const injected = window.LibrariesPro?.apiBase;
   if (injected) return injected;
@@ -74,6 +76,10 @@ export async function streamAgentTurn(
   },
   handlers: AgentEventHandlers
 ): Promise<AgentTurnResult> {
+  /* Self-hosted: the agent needs the hosted API, so no request is sent. */
+  if (!AGENT_ENABLED) {
+    throw new AgentError("The Studio agent is not available in this self-hosted build. Manual control works fully.", "agent_disabled");
+  }
   let response: Response;
   try {
     response = await fetch(`${apiBase()}/studio/chat`, {

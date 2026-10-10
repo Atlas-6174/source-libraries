@@ -148,6 +148,11 @@
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   function sendFeedback() {
     if (fbSending || !fbInput) return;
+    // Self-hosted: no feedback backend, so nothing is submitted anywhere.
+    if (!FEEDBACK_API) {
+      fbNoteSet("err", 'Feedback is collected on <a href="https://github.com/Atlas-6174/source-libraries/issues" rel="noopener">GitHub Issues</a>.');
+      return;
+    }
     var message = fbInput.value.trim();
     if (!message) {
       shakeInput();

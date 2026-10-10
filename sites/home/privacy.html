@@ -323,7 +323,7 @@
 
       <section>
         <h2>What this site collects</h2>
-        <p>Nothing you enter is sent to the operator. There are no sign-in forms, no newsletters and no feedback forms that submit data.</p>
+        <p>Nothing you type on this site is submitted anywhere. There are no sign-in forms or newsletters, and feedback goes to GitHub Issues (see below).</p>
         <p>
           <strong>Server logs.</strong> Like any web server, the nginx server behind this
           site records each request: IP address, date and time, requested URL, response
@@ -335,11 +335,15 @@
       <section>
         <h2>What stays in your browser</h2>
         <p>
-          Some preferences are saved in your browser's local storage under keys that
-          start with <code>ldev:</code>: the Studio theme and layout, the presets you save
-          in the Studio, and a cached GitHub star count. They never leave your device;
-          clear your site data to remove them.
+          The site stores a few values in your browser, under keys that start with
+          <code>ldev:</code>. None of them contains personal data, and none is sent
+          anywhere:
         </p>
+        <ul>
+          <li><strong>Local storage</strong> (kept until you clear it): Studio presets you save (<code>ldev:studio:presets:*</code>), the Studio theme and stage fill, and <code>ldev:auth</code>, a flag that makes the pages show the open Studio.</li>
+          <li><strong>Session storage</strong> (cleared when you close the tab): cached GitHub star and npm download counts.</li>
+        </ul>
+        <p>There are no cookies. Clear this site's data in your browser to remove everything.</p>
         <p>
           <strong>Microphone.</strong> The Voice demos ask for microphone access only when
           you start them. The audio is analysed locally to drive the animation and is

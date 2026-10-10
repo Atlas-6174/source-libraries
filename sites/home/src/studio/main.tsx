@@ -136,6 +136,11 @@ function FeedbackPage({ email, onBack, onSent }: { email: string; onBack: () => 
 
   const send = () => {
     if (sending) return;
+    /* Self-hosted: no feedback backend, so nothing is submitted anywhere. */
+    if (!FEEDBACK_API) {
+      setNote({ kind: "err", html: `Feedback is collected on <a href="https://github.com/Atlas-6174/source-libraries/issues" rel="noopener">GitHub Issues</a>.` });
+      return;
+    }
     const text = message.trim();
     if (!text) {
       setShake("message");

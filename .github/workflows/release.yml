@@ -1,5 +1,6 @@
-# Publishes a multi-arch image to GHCR when a SemVer tag (v1.2.3) is pushed.
-# The amd64 image is scanned before anything is pushed.
+# Publishes a multi-arch image to GHCR when a SemVer tag (v1.2.3) is pushed
+# for a commit on main. Each architecture is built and scanned before the
+# push; the push reuses those exact layers from the per-platform caches.
 name: Release
 
 on:
@@ -15,21 +16,26 @@ concurrency:
 
 env:
   IMAGE_NAME: ghcr.io/atlas-6174/source-libraries
+  # Pinned by version and digest; bump both together (not tracked by Dependabot).
   TRIVY_IMAGE: aquasec/trivy:0.75.0@sha256:af6acf9a6b85dfe389a1941505c0ce9efef52a4719635e1a962f022a3d855daa
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     permissions:
       contents: read
       packages: write
-      id-token: write       # provenance attestation
-      attestations: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          fetch-depth: 0
+
+      - name: Require the tagged commit to be on main
+        run: |
+          git fetch --no-tags origin main
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main
 
       - uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4.4.0
       - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
@@ -41,15 +47,31 @@ jobs:
           file: infra/docker/Dockerfile
           platforms: linux/amd64
           load: true
-          tags: ${{ env.IMAGE_NAME }}:scan
-          cache-from: type=gha
+          tags: ${{ env.IMAGE_NAME }}:scan-amd64
+          cache-from: type=gha,scope=release-amd64
+          cache-to: type=gha,scope=release-amd64,mode=max
 
-      - name: Scan image (HIGH/CRITICAL with a fix available)
+      - name: Build arm64 for scanning
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          file: infra/docker/Dockerfile
+          platforms: linux/arm64
+          load: true
+          tags: ${{ env.IMAGE_NAME }}:scan-arm64
+          cache-from: type=gha,scope=release-arm64
+          cache-to: type=gha,scope=release-arm64,mode=max
+
+      - name: Scan both images (HIGH/CRITICAL with a fix available)
         run: |
-          docker save "$IMAGE_NAME:scan" -o image.tar
-          docker run --rm -v "$PWD/image.tar:/image.tar:ro" "$TRIVY_IMAGE" \
-            image --input /image.tar --scanners vuln --severity HIGH,CRITICAL \
-            --ignore-unfixed --no-progress --exit-code 1
+          for arch in amd64 arm64; do
+            echo "::group::Scan $arch"
+            docker save "$IMAGE_NAME:scan-$arch" -o "image-$arch.tar"
+            docker run --rm -v "$PWD/image-$arch.tar:/image.tar:ro" "$TRIVY_IMAGE" \
+              image --input /image.tar --scanners vuln --severity HIGH,CRITICAL \
+              --ignore-unfixed --no-progress --exit-code 1
+            echo "::endgroup::"
+          done
 
       - id: meta
         uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
@@ -67,7 +89,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push (amd64 + arm64)
+      - name: Push amd64 + arm64 from the scanned layers
         uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: .
@@ -78,5 +100,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           provenance: mode=max
           sbom: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: |
+            type=gha,scope=release-amd64
+            type=gha,scope=release-arm64

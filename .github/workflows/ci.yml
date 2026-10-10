@@ -22,7 +22,7 @@ concurrency:
 
 env:
   IMAGE: ghcr.io/atlas-6174/source-libraries:ci
-  # Pinned by version and digest; bump both together.
+  # Pinned by version and digest; bump both together (not tracked by Dependabot).
   TRIVY_IMAGE: aquasec/trivy:0.75.0@sha256:af6acf9a6b85dfe389a1941505c0ce9efef52a4719635e1a962f022a3d855daa
   # PERF_BUDGETS.md: compressed image size.
   IMAGE_BUDGET_BYTES: "50000000"
@@ -47,7 +47,8 @@ jobs:
           load: true
           tags: source-libraries-build:ci
           cache-from: type=gha
-          cache-to: type=gha,mode=max
+          # Only trusted pushes write the cache; pull requests just read it.
+          cache-to: ${{ github.event_name == 'push' && 'type=gha,mode=max' || '' }}
 
       - name: Typecheck
         run: docker run --rm source-libraries-build:ci npm run typecheck -w @sites/home
